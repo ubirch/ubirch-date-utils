@@ -13,8 +13,8 @@ scalacOptions ++= Seq(
   "-feature"
 )
 scmInfo := Some(ScmInfo(
-  url("https://github.com/ubirch/ubirch-oidc-utils"),
-  "https://github.com/ubirch/ubirch-oidc-utils.git"
+  url("https://github.com/ubirch/ubirch-date-utils"),
+  "https://github.com/ubirch/ubirch-date-utils.git"
 ))
 
 /*
