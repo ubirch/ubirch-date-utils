@@ -22,7 +22,7 @@
 
     <groupId>com.ubirch.util</groupId>
     <artifactId>ubirch-date-utils_${scala.major.version}</artifactId>
-    <version>0.5.4</version>
+    <version>0.5.5</version>
     <packaging>jar</packaging>
 
     <licenses>
@@ -85,6 +85,7 @@
         <maven-dependency-plugin.version>2.8</maven-dependency-plugin.version>
         <scala-maven-plugin.version>3.3.2</scala-maven-plugin.version>
         <maven-surefire-plugin.version>2.7</maven-surefire-plugin.version>
+        <scoverage.plugin.version>1.4.0</scoverage.plugin.version>
         <scalatest-maven-plugin.version>1.0</scalatest-maven-plugin.version>
         <!-- plugins -->
 
@@ -138,13 +139,14 @@
         <repository>
             <id>io.cloudrepo</id>
             <name>Ubirch Public Cloud Repo Repository</name>
-            <url>https://ubirch.mycloudrepo.io/repositories/ubirch-utils-mvn</url>
+            <url>https://ubirch.mycloudrepo.io/repositories/mvn-public</url>
         </repository>
     </distributionManagement>
 
 
     <build>
-
+        <sourceDirectory>${basedir}/src/main/scala</sourceDirectory>
+        <testSourceDirectory>${basedir}/src/test/scala</testSourceDirectory>
         <plugins>
 
             <plugin>
@@ -215,6 +217,16 @@
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.scoverage</groupId>
+                <artifactId>scoverage-maven-plugin</artifactId>
+                <version>${scoverage.plugin.version}</version>
+                <configuration>
+                    <scalaVersion>${scala.version}</scalaVersion>
+                    <!-- other parameters -->
+                </configuration>
             </plugin>
 
             <plugin>
