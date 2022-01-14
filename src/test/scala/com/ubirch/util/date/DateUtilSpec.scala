@@ -2,30 +2,31 @@ package com.ubirch.util.date
 
 import org.joda.time.format.ISODateTimeFormat
 import org.joda.time.{DateTime, DateTimeZone, Period}
-import org.scalatest.{FeatureSpec, Matchers}
+import org.scalatest.featurespec.AnyFeatureSpec
+import org.scalatest.matchers.should.Matchers
 
 /**
   * author: cvandrei
   * since: 2017-09-26
   */
-class DateUtilSpec extends FeatureSpec
+class DateUtilSpec extends AnyFeatureSpec
   with Matchers {
 
-  feature("parseDateToUTC()") {
+  Feature("parseDateToUTC()") {
 
-    scenario("invalid date") {
-      an [IllegalArgumentException] shouldBe thrownBy(DateUtil.parseDateToUTC("2017-Sep-26"))
+    Scenario("invalid date") {
+      an[IllegalArgumentException] shouldBe thrownBy(DateUtil.parseDateToUTC("2017-Sep-26"))
     }
 
-    scenario("valid date") {
+    Scenario("valid date") {
       DateUtil.parseDateToUTC("2017-09-26").toString(ISODateTimeFormat.dateTime()) should be("2017-09-26T00:00:00.000Z")
     }
 
   }
 
-  feature("dateRange") {
+  Feature("dateRange") {
 
-    scenario("from = to, 5 second stepSize") {
+    Scenario("from = to, 5 second stepSize") {
 
       // prepare
       println(s"stepSize=${Period.seconds(5).getMillis}")
@@ -40,7 +41,7 @@ class DateUtilSpec extends FeatureSpec
 
     }
 
-    scenario("from = to, -5 second stepSize") {
+    Scenario("from = to, -5 second stepSize") {
 
       // prepare
       val from = DateTime.now(DateTimeZone.UTC)
@@ -51,7 +52,7 @@ class DateUtilSpec extends FeatureSpec
 
     }
 
-    scenario("from < to (=from + 2*stepSize), 5 second stepSize") {
+    Scenario("from < to (=from + 2*stepSize), 5 second stepSize") {
 
       // prepare
       val stepSize = Period.seconds(5)
@@ -67,7 +68,7 @@ class DateUtilSpec extends FeatureSpec
 
     }
 
-    scenario("from < to (=from + 2*stepSize-1), 5 millisecond stepSize") {
+    Scenario("from < to (=from + 2*stepSize-1), 5 millisecond stepSize") {
 
       // prepare
       val stepSize = Period.millis(5000)
@@ -83,7 +84,7 @@ class DateUtilSpec extends FeatureSpec
 
     }
 
-    scenario("from < to (=from + 2*stepSize+1), 5000 millisecond stepSize") {
+    Scenario("from < to (=from + 2*stepSize+1), 5000 millisecond stepSize") {
 
       // prepare
       val stepSize = Period.millis(5000)
@@ -99,7 +100,7 @@ class DateUtilSpec extends FeatureSpec
 
     }
 
-    scenario("from < to (=from + 2*stepSize), -5 second stepSize") {
+    Scenario("from < to (=from + 2*stepSize), -5 second stepSize") {
 
       // prepare
       val stepSize = Period.millis(-5000)
@@ -111,7 +112,7 @@ class DateUtilSpec extends FeatureSpec
 
     }
 
-    scenario("from < to (=from + 2*stepSize-1), -5000 millisecond stepSize") {
+    Scenario("from < to (=from + 2*stepSize-1), -5000 millisecond stepSize") {
 
       // prepare
       val stepSize = Period.millis(-5000)
@@ -123,7 +124,7 @@ class DateUtilSpec extends FeatureSpec
 
     }
 
-    scenario("from < to (=from + 2*stepSize+1), -5000 millisecond stepSize") {
+    Scenario("from < to (=from + 2*stepSize+1), -5000 millisecond stepSize") {
 
       // prepare
       val stepSize = Period.millis(-5000)
@@ -135,7 +136,7 @@ class DateUtilSpec extends FeatureSpec
 
     }
 
-    scenario("to > from (=to + 2*stepSize), 5 second stepSize") {
+    Scenario("to > from (=to + 2*stepSize), 5 second stepSize") {
 
       // prepare
       val stepSize = Period.seconds(5)
@@ -151,7 +152,7 @@ class DateUtilSpec extends FeatureSpec
 
     }
 
-    scenario("to > from (=to + 2*stepSize-1), 5000 millisecond stepSize") {
+    Scenario("to > from (=to + 2*stepSize-1), 5000 millisecond stepSize") {
 
       // prepare
       val stepSize = Period.millis(5000)
@@ -167,7 +168,7 @@ class DateUtilSpec extends FeatureSpec
 
     }
 
-    scenario("from > to (=from + 2*stepSize+1), 5000 millisecond stepSize") {
+    Scenario("from > to (=from + 2*stepSize+1), 5000 millisecond stepSize") {
 
       // prepare
       val stepSize = Period.millis(5000)
@@ -183,7 +184,7 @@ class DateUtilSpec extends FeatureSpec
 
     }
 
-    scenario("to > from (=to + 2*stepSize), -5 second stepSize") {
+    Scenario("to > from (=to + 2*stepSize), -5 second stepSize") {
 
       // prepare
       val stepSize = Period.seconds(-5)
@@ -195,7 +196,7 @@ class DateUtilSpec extends FeatureSpec
 
     }
 
-    scenario("to > from (=to + 2*stepSize-1), -5000 millisecond stepSize") {
+    Scenario("to > from (=to + 2*stepSize-1), -5000 millisecond stepSize") {
 
       // prepare
       val stepSize = Period.millis(-5000)
@@ -207,7 +208,7 @@ class DateUtilSpec extends FeatureSpec
 
     }
 
-    scenario("from > to (=from + 2*stepSize+1), -5000 millisecond stepSize") {
+    Scenario("from > to (=from + 2*stepSize+1), -5000 millisecond stepSize") {
 
       // prepare
       val stepSize = Period.millis(-5000)
